@@ -1,5 +1,6 @@
 import React from 'react';
-import Item from './Item'
+import Item from './Item';
+import RoundButton from './RoundButton'
 
 function Container() {
     return (
@@ -8,6 +9,8 @@ function Container() {
             <Item />
             <Item />
             <Item />
+            <RoundButton action="addNewItem" />
+            <RoundButton action="helpCenter" />
         </>
     )
 }

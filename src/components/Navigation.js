@@ -1,18 +1,20 @@
 import React from 'react';
-import Search from './Search'
+import Search from './Search';
+import NavButton from './NavButton';
+import AccountMenu from './AccountMenu'
 
 function Navigation() {
     return (
         <nav>
-            {/* <img>Logo</img> */}
             <ul>
-                <li>Home</li>
-                <li>Following</li>
+                <NavButton type="logo" />
+                <NavButton type="home" />
+                <NavButton type="following" />
                 <Search />
-                {/* <Updates />
-                <Inbox />
-                <Account />
-                <AccountMenu /> */}
+                <NavButton type="updates" />
+                <NavButton type="inbox" />
+                <NavButton type="account" />
+                <AccountMenu />
             </ul>
         </nav>
     )

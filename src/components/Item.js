@@ -2,7 +2,8 @@ import React from 'react';
 
 function Item() {
     return (
-            <p>item here</p>
+            // <img>Image here</img>
+            <h2>Heading here</h2>
         )
 }
 
