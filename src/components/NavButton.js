@@ -2,9 +2,9 @@ import React from 'react';
 
 function NavButton(props) {
     return (
-        <li>
+        <div className="nav-item" >
             {props.type}
-        </li>
+        </div>
     ) 
 }
 

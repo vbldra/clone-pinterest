@@ -2,7 +2,9 @@ import React from 'react';
 
 function AccountMenu() {
     return (
-        <li>+</li>
+        <div className="nav-item">
+            +
+        </div>
     )
 }
 

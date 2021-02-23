@@ -2,8 +2,9 @@ import React from 'react';
 
 function Item() {
     return (
-            // <img>Image here</img>
-            <h2>Heading here</h2>
+            <div className="item">
+                <h2>Heading here</h2>
+            </div>
         )
 }
 
