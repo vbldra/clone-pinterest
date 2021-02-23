@@ -3,7 +3,7 @@ import Item from './Item';
 
 function FollowingContainer() {
     return (
-        <div>
+        <div className="container">
             <p>Welcome to your new following tab!</p>
             <p>Discover ideas from people you follow...</p>
             <div className="flex-container">

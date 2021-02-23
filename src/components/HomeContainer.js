@@ -3,11 +3,25 @@ import Item from './Item';
 
 function HomeContainer() {
     return (
-        <div className="flex-container">
-            <Item />
-            <Item />
-            <Item />
-            <Item />
+        <div className="container">
+            <div className="flex-container">
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+                <Item />
+            </div>
         </div>
     )
 }
