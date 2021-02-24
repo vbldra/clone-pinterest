@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import '../styles/app.css';
 import Navigation from "./Navigation";
 import HomeContainer from './HomeContainer';
 import FollowingContainer from './FollowingContainer';
@@ -8,6 +8,7 @@ import RoundButton from './RoundButton'
 import { Route } from 'react-router-dom'
 
 function App() {
+  
   return (
     <div className="App">
       <Navigation />
