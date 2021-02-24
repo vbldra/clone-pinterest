@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom'
 import PopupOptions from './PopupOptions'
+import PopupUpdates from './PopupUpdates'
+import PopupInbox from './PopupInbox'
 import Search from './Search';
-import NavButton from './NavButton';
 
 function Navigation() {
+    const [updatesPopupVisible, setUpdatesPopupVisible] = useState(false);
+    const [inboxPopupVisible, setInboxPopupVisible] = useState(false);
     const [optionPopupVisible, setOptionPopupVisible] = useState(false);
+    
+    function closePopup() {
+        setUpdatesPopupVisible(false)
+        setInboxPopupVisible(false)
+        setOptionPopupVisible(false)
+    }
 
     return (
         <nav>
@@ -13,14 +22,31 @@ function Navigation() {
             <NavLink className="nav-item" activeClassName="active" exact to="/">Home</NavLink>
             <NavLink className="nav-item" activeClassName="active" exact to="/following">Following</NavLink>
             <Search />
-            <NavButton 
-                type="updates" />
-            <NavButton 
-                type="inbox" />
+            <button 
+                onClick={e => {
+                    closePopup()
+                    setUpdatesPopupVisible(!updatesPopupVisible)
+                }
+            }>+</button>
+            {updatesPopupVisible && (
+                <PopupUpdates />   
+            )}
+            <button 
+                onClick={e => {
+                    closePopup()
+                    setInboxPopupVisible(!inboxPopupVisible)
+                }
+            }>+</button>
+            {inboxPopupVisible && (
+                <PopupInbox />   
+            )}
             <NavLink className="nav-item" exact to="/vbldra/_saved/">V</NavLink> {/*link to account name*/}
-            <button onClick={() => setOptionPopupVisible(!optionPopupVisible)}>
-              +
-            </button>
+            <button 
+                onClick={e => {
+                    closePopup()
+                    setOptionPopupVisible(!optionPopupVisible)
+                }
+            }>+</button>
             {optionPopupVisible && (
                 <PopupOptions />   
             )}
