@@ -3,18 +3,24 @@ import { NavLink } from 'react-router-dom'
 import PopupOptions from './PopupOptions'
 import PopupUpdates from './PopupUpdates'
 import PopupInbox from './PopupInbox'
+import PopupAdd from './PopupAdd'
+import PopupHelp from './PopupHelp'
 import Search from './Search';
 
-function Navigation() {
-    const [updatesPopupVisible, setUpdatesPopupVisible] = useState(false);
-    const [inboxPopupVisible, setInboxPopupVisible] = useState(false);
-    const [optionPopupVisible, setOptionPopupVisible] = useState(false);
+function Navigation(props) {
+    // const [popupUpdatesVisible, setPopupUpdatesVisible] = useState(false);
+    // const [popupInboxVisible, setPopupInboxVisible] = useState(false);
+    // const [popupOptionVisible, setPopupOptionVisible] = useState(false);
+    // const [popupAddVisible, setPopupAddVisible] = useState(false);
+    // const [popupHelpVisible, setPopupHelpVisible] = useState(false);
     
-    function closePopup() {
-        setUpdatesPopupVisible(false)
-        setInboxPopupVisible(false)
-        setOptionPopupVisible(false)
-    }
+    // function closePopup() {
+    //     setPopupUpdatesVisible(false)
+    //     setPopupInboxVisible(false)
+    //     setPopupOptionVisible(false)
+    //     setPopupAddVisible(false)
+    //     setPopupHelpVisible(false)
+    // }
 
     return (
         <nav>
@@ -24,32 +30,30 @@ function Navigation() {
             <Search />
             <button 
                 onClick={e => {
-                    closePopup()
-                    setUpdatesPopupVisible(!updatesPopupVisible)
+                    props.dispatch({type: "popupUpdatesVisible"})
                 }
-            }>+</button>
-            {updatesPopupVisible && (
+            }>+</button>                       
+            {props.popups.popupUpdatesVisible && (
                 <PopupUpdates />   
             )}
             <button 
                 onClick={e => {
-                    closePopup()
-                    setInboxPopupVisible(!inboxPopupVisible)
+                    props.dispatch({type: "popupInboxVisible"})
                 }
-            }>+</button>
-            {inboxPopupVisible && (
+            }>+</button>                    
+            {props.popups.popupInboxVisible && (
                 <PopupInbox />   
             )}
-            <NavLink className="nav-item" exact to="/vbldra/_saved/">V</NavLink> {/*link to account name*/}
+            {/* <NavLink className="nav-item" exact to="/vbldra/_saved/">V</NavLink> 
             <button 
                 onClick={e => {
                     closePopup()
-                    setOptionPopupVisible(!optionPopupVisible)
+                    setPopupOptionVisible(!popupOptionVisible)
                 }
-            }>+</button>
-            {optionPopupVisible && (
+            }>+</button>                       
+            {popupOptionVisible && (
                 <PopupOptions />   
-            )}
+            )} */}
       </nav>
     )
 }
