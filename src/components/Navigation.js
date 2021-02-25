@@ -1,43 +1,45 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom'
 import PopupOptions from './PopupOptions'
 import PopupUpdates from './PopupUpdates'
 import PopupInbox from './PopupInbox'
-import PopupAdd from './PopupAdd'
-import PopupHelp from './PopupHelp'
 import Search from './Search';
+import { MessengerPiggeon } from "./App";
 
-function Navigation(props) {
-    
+function Navigation() {
+    const {dispatch, popups, user} = useContext(MessengerPiggeon)
     return (
         <nav>
             <NavLink className="nav-item" exact to="/">P</NavLink>
             <NavLink className="nav-item" activeClassName="active" exact to="/">Home</NavLink>
             <NavLink className="nav-item" activeClassName="active" exact to="/following">Following</NavLink>
             <Search />
+
             <button 
                 onClick={e => {
-                    props.dispatch({type: "popupUpdatesVisible"})
+                    dispatch({type: "popupUpdatesVisible"})
                 }
             }>+</button>                       
-            {props.popups.popupUpdatesVisible && (
+            {popups.popupUpdatesVisible && (
                 <PopupUpdates />   
             )}
             <button 
                 onClick={e => {
-                    props.dispatch({type: "popupInboxVisible"})
+                    dispatch({type: "popupInboxVisible"})
                 }
             }>+</button>                    
-            {props.popups.popupInboxVisible && (
+            {popups.popupInboxVisible && (
                 <PopupInbox />   
             )}
-            <NavLink className="nav-item" exact to="/vbldra/_saved/">V</NavLink> 
+
+            {user.username && <NavLink className="nav-item" exact to="/vbldra/_saved/">V</NavLink> }
+            
             <button 
                 onClick={e => {
-                    props.dispatch({type: "popupOptionVisible"})
+                    dispatch({type: "popupOptionVisible"})
                 }
             }>+</button>                       
-            {props.popups.popupOptionVisible && (
+            {popups.popupOptionVisible && (
                 <PopupOptions />   
             )}
       </nav>

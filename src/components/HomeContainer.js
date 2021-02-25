@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Item from './Item';
+// import {MessengerPiggeon} from './App'
+
 
 function HomeContainer() {
+    // const user = useContext(MessengerPiggeon)
+    // console.log(user)
     return (
         <div className="container">
             <div className="flex-container">

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import '../styles/app.css';
 import Navigation from "./Navigation";
 import HomeContainer from './HomeContainer';
@@ -8,7 +8,12 @@ import PopupAdd from './PopupAdd'
 import PopupHelp from './PopupHelp'
 import { Route } from 'react-router-dom'
 
+export const MessengerPiggeon = React.createContext(null)
+
 function App() {
+  const [user, setUser] = useState({
+    username: "null"
+  })
 
   const [popups, dispatch ] = useReducer(popupReducer, {
     popupUpdatesVisible: false,
@@ -21,20 +26,19 @@ function App() {
   function popupReducer(state, action) {
     const newState = {...state}
     for (const key in newState) {
-      // newState[key] = !newState[key]
-      newState[key] = false
-      if (action.type === key) {
-        newState[key] = !newState[key]
-      }
+      newState[key] = action.type === key ? !newState[key] : false
     }
     return newState
   }
 
   return (
     <div className="App">
-      <Navigation dispatch={dispatch} popups={popups}/>
+      <MessengerPiggeon.Provider value={{dispatch, popups, user}}>
+        <Navigation />
+      </MessengerPiggeon.Provider>
+      
       <Route path="/" exact>
-        <HomeContainer />
+        {user.username && <HomeContainer />}
       </Route>
       <Route path="/following">
         <FollowingContainer />
@@ -42,6 +46,7 @@ function App() {
       <Route path="/vbldra/_saved/"> {/*link to account name*/}
         <Account />
       </Route>
+
       <button 
         onClick={e => {
           dispatch({type: "popupAddVisible"})
@@ -50,6 +55,7 @@ function App() {
       {popups.popupAddVisible && (
         <PopupAdd />   
       )}
+
       <button 
         onClick={e => {
           dispatch({type: "popupHelpVisible"})
