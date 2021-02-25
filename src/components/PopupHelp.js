@@ -1,20 +1,11 @@
 import React from 'react';
-// import '../styles/popupOptions.css';
+import '../styles/popupDownOptions.css';
 
 
 function PopupHelp() {
     return (
-        <div className="popup">
-            <h2>Inbox</h2>
-            <p>Share ideas with your friends</p>
-            <p className="search">SEARCH BAR</p>
-            <p>Suggested</p>
-            <ul>
-                <li>Person</li>
-                <li>Person</li>
-                <li>Person</li>
-                <li>Person</li>
-            </ul>
+        <div className="popupDown">
+            <h2>Help</h2>
         </div>
     )
 }
