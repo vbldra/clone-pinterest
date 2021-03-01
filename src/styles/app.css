@@ -7,12 +7,12 @@ body{
   text-align: center;
 }
 
+/* Navigation menu */
 nav {
   position: fixed;
   display: flex;
   top: 0;
   width: 100%;
-  /* justify-content: space-around; */
   align-items: center;
   background-color: lightblue;
   box-shadow: 0 0 20px -10px black;
@@ -27,6 +27,7 @@ nav {
   flex-grow: 2;
 }
 
+/* Main container */
 .container {
   margin: 80px 100px;
 }
@@ -35,14 +36,29 @@ nav {
   display: grid;
   grid-template-columns: repeat(auto-fill, 236px);
   justify-content: center;
-  /* grid-template-columns: repeat(4, 1fr); */
   gap: 20px;
 }
 
 .item {
-  /* margin: 20px; */
   padding: 20px;
   background: lightblue;
   border-radius: 15px;
-  height: 200px;
+  align-self: start;
+  text-align: left;
+  font-size: 10px;
+
+}
+
+.item img {
+  width: 100%;
+}
+
+.item p {
+  margin-bottom: 20px;
+}
+
+.item a {
+  color: white;
+  text-decoration: none;
+  
 }

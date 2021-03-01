@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import '../styles/app.css';
 import Navigation from "./Navigation";
 import HomeContainer from './HomeContainer';
@@ -23,6 +23,16 @@ function App() {
     popupHelpVisible: false,
   })
 
+  const [data, setData] = useState([])
+  const access_key = "2H3mvcSCyKBluMbaLXRrjODWLIP1mjIDY64McgFzrxk";
+  const query = "software"
+  useEffect(async () => {
+      const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&page=1&per_page=50&client_id=${access_key}`)
+      const resData = await response.json()
+      setData(resData.results)
+    }, [])
+
+
   function popupReducer(state, action) {
     const newState = {...state}
     for (const key in newState) {
@@ -38,10 +48,10 @@ function App() {
       </MessengerPiggeon.Provider>
       
       <Route path="/" exact>
-        {user.username && <HomeContainer />}
+        {user.username && <HomeContainer data={data} />}
       </Route>
       <Route path="/following">
-        <FollowingContainer />
+        <FollowingContainer data={data}/>
       </Route>
       <Route path="/vbldra/_saved/"> {/*link to account name*/}
         <Account />
