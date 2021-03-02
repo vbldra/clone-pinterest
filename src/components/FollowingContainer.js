@@ -1,13 +1,13 @@
 import React from 'react';
-import Item from './Item';
+import DataApi from "./DataApi";
 
-function FollowingContainer(props) {
+function FollowingContainer() {
     return (
         <div className="container">
             <p>Welcome to your new following tab!</p>
             <p>Discover ideas from people you follow...</p>
             <div className="flex-container">
-                {props.data.map((photo, index)=> <Item key={index} photo={photo}/>)}
+                <DataApi type="followingPage"/>
             </div>
         </div>
     )

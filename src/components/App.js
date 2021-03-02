@@ -1,12 +1,16 @@
 import React, { useReducer, useState, useEffect } from 'react';
+import { Route } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faQuestion } from '@fortawesome/free-solid-svg-icons'
+
 import '../styles/app.css';
+
 import Navigation from "./Navigation";
 import HomeContainer from './HomeContainer';
 import FollowingContainer from './FollowingContainer';
 import Account from './Account'
 import PopupAdd from './PopupAdd'
 import PopupHelp from './PopupHelp'
-import { Route } from 'react-router-dom'
 
 export const MessengerPiggeon = React.createContext(null)
 
@@ -15,6 +19,7 @@ function App() {
     username: "null"
   })
 
+  // Popups
   const [popups, dispatch ] = useReducer(popupReducer, {
     popupUpdatesVisible: false,
     popupInboxVisible: false,
@@ -23,16 +28,6 @@ function App() {
     popupHelpVisible: false,
   })
 
-  const [data, setData] = useState([])
-  const access_key = "2H3mvcSCyKBluMbaLXRrjODWLIP1mjIDY64McgFzrxk";
-  const query = "software"
-  useEffect(async () => {
-      const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&page=1&per_page=50&client_id=${access_key}`)
-      const resData = await response.json()
-      setData(resData.results)
-    }, [])
-
-
   function popupReducer(state, action) {
     const newState = {...state}
     for (const key in newState) {
@@ -40,6 +35,19 @@ function App() {
     }
     return newState
   }
+  
+  // // API
+  // const [data, setData] = useState([])
+  // const access_key = "2H3mvcSCyKBluMbaLXRrjODWLIP1mjIDY64McgFzrxk";
+
+  // // search
+  // const query = "javascript" 
+  
+  // useEffect(async () => {
+  //     const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&per_page=50&client_id=${access_key}`)
+  //     const resData = await response.json()
+  //     setData(resData.results)
+  //   }, [])
 
   return (
     <div className="App">
@@ -48,32 +56,28 @@ function App() {
       </MessengerPiggeon.Provider>
       
       <Route path="/" exact>
-        {user.username && <HomeContainer data={data} />}
+        {user.username && <HomeContainer />}
       </Route>
       <Route path="/following">
-        <FollowingContainer data={data}/>
+        <FollowingContainer />
       </Route>
       <Route path="/vbldra/_saved/"> {/*link to account name*/}
         <Account />
       </Route>
 
-      <button 
-        onClick={e => {
+      <button onClick={() => {
           dispatch({type: "popupAddVisible"})
-        }
-        }>+</button>                       
-      {popups.popupAddVisible && (
-        <PopupAdd />   
-      )}
+        }}>
+      <FontAwesomeIcon icon={faPlus} />
+      </button>                       
+      {popups.popupAddVisible && <PopupAdd />}
 
-      <button 
-        onClick={e => {
+      <button onClick={() => {
           dispatch({type: "popupHelpVisible"})
-        }
-        }>+</button>                       
-      {popups.popupHelpVisible && (
-        <PopupHelp />   
-      )}
+        }}>
+      <FontAwesomeIcon icon={faQuestion} />
+      </button>                       
+      {popups.popupHelpVisible && <PopupHelp />}
     </div>
   );
 }

@@ -1,20 +1,17 @@
-import React, { useState, useContext, useEffect } from 'react';
-import Item from './Item';
+import React from 'react';
+import DataApi from "./DataApi";
+
+
 // import {MessengerPiggeon} from './App'
 
 
-function HomeContainer(props) {
+function HomeContainer() {
     // const user = useContext(MessengerPiggeon)
     // console.log(user)
-    
-
-    
     return (
         <div className="container">
             <div className="flex-container">
-                
-                {props.data.map((photo, index)=> <Item key={index} photo={photo}/>)}
-                
+                <DataApi type="homePage"/>
             </div>
         </div>
     )
