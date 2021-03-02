@@ -15,46 +15,50 @@ function Navigation() {
     const {dispatch, popups, user} = useContext(MessengerPiggeon)
     return (
         <nav>
-            <NavLink className="nav-item" exact to="/">
-                <FontAwesomeIcon icon={faPinterest} />
-            </NavLink>
+            <div className="nav-left">
+                <NavLink className="nav-item logo" exact to="/">
+                    <FontAwesomeIcon className="icon" icon={faPinterest} />
+                </NavLink>
 
-            <NavLink className="nav-item" activeClassName="active" exact to="/">
-                Home
-            </NavLink>
+                <NavLink className="nav-item" activeClassName="active" exact to="/">
+                    Home
+                </NavLink>
 
-            <NavLink className="nav-item" activeClassName="active" exact to="/following">
-                Following
-            </NavLink>
+                <NavLink className="nav-item" activeClassName="active" exact to="/following">
+                    Following
+                </NavLink>
+            </div>
 
             <Search />
 
-            <button onClick={() => {
-                    dispatch({type: "popupUpdatesVisible"})
-                }}>
-                <FontAwesomeIcon icon={faBell} />
-            </button>
-            {popups.popupUpdatesVisible && <PopupUpdates />}
+            <div className="nav-right">
+                <button className="nav-item icon" onClick={() => {
+                        dispatch({type: "popupUpdatesVisible"})
+                    }}>
+                    <FontAwesomeIcon icon={faBell} />
+                </button>
+                {popups.popupUpdatesVisible && <PopupUpdates />}
 
-            <button onClick={() => {
-                    dispatch({type: "popupInboxVisible"})
-                }}>
-                <FontAwesomeIcon icon={faCommentDots} />
-            </button>    
-            {popups.popupInboxVisible && <PopupInbox />}
+                <button className="nav-item icon" onClick={() => {
+                        dispatch({type: "popupInboxVisible"})
+                    }}>
+                    <FontAwesomeIcon icon={faCommentDots} />
+                </button>    
+                {popups.popupInboxVisible && <PopupInbox />}
 
-            {user.username && 
-                <NavLink className="nav-item" exact to="/USER_NAME/_saved/">
-                    <FontAwesomeIcon icon={faUser} />
-                </NavLink> 
-            }
-            
-            <button onClick={() => {
-                    dispatch({type: "popupOptionVisible"})
-                }}>
-                <FontAwesomeIcon icon={faChevronDown} />
-            </button>   
-            {popups.popupOptionVisible && <PopupOptions />}
+                {user.username && 
+                    <NavLink className="nav-item icon user_logo" exact to="/USER_NAME/_saved/">
+                        <FontAwesomeIcon icon={faUser} />
+                    </NavLink> 
+                }
+                
+                <button  className="icon arrow" onClick={() => {
+                        dispatch({type: "popupOptionVisible"})
+                    }}>
+                    <FontAwesomeIcon icon={faChevronDown} />
+                </button>   
+                {popups.popupOptionVisible && <PopupOptions />}
+            </div>
       </nav>
     )
 }

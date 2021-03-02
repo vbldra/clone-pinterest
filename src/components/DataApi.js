@@ -3,7 +3,7 @@ import Item from './Item';
 
 
 function DataApi(props) {
-    // API
+    
     const [data, setData] = useState([])
     const access_key = "2H3mvcSCyKBluMbaLXRrjODWLIP1mjIDY64McgFzrxk";
     let linkApi;

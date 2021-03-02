@@ -2,6 +2,7 @@ import React from 'react';
 import DataApi from "./DataApi";
 
 function FollowingContainer() {
+    
     return (
         <div className="container">
             <p>Welcome to your new following tab!</p>

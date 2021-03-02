@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useState } from 'react';
 import { Route } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faQuestion } from '@fortawesome/free-solid-svg-icons'
@@ -35,19 +35,6 @@ function App() {
     }
     return newState
   }
-  
-  // // API
-  // const [data, setData] = useState([])
-  // const access_key = "2H3mvcSCyKBluMbaLXRrjODWLIP1mjIDY64McgFzrxk";
-
-  // // search
-  // const query = "javascript" 
-  
-  // useEffect(async () => {
-  //     const response = await fetch(`https://api.unsplash.com/search/photos?query=${query}&per_page=50&client_id=${access_key}`)
-  //     const resData = await response.json()
-  //     setData(resData.results)
-  //   }, [])
 
   return (
     <div className="App">
@@ -78,6 +65,7 @@ function App() {
       <FontAwesomeIcon icon={faQuestion} />
       </button>                       
       {popups.popupHelpVisible && <PopupHelp />}
+      
     </div>
   );
 }
