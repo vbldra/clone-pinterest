@@ -79,6 +79,10 @@ button {
 
 
 /* Main container */
+.loading-text {
+  padding: 50px;
+}
+
 .container {
   margin: 80px 100px;
 }

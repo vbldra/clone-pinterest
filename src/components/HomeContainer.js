@@ -8,9 +8,7 @@ function HomeContainer() {
     // console.log(user)
     return (
         <div className="container">
-            <div className="flex-container">
-                <DataApi type="homePage"/>
-            </div>
+            <DataApi type="homePage"/>
         </div>
     )
 }
