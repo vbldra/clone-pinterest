@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faQuestion } from '@fortawesome/free-solid-svg-icons'
 
-import '../styles/app.css';
+import './app.scss';
 
 import Navigation from "./Navigation";
 import HomeContainer from './HomeContainer';
@@ -55,14 +55,14 @@ function App() {
       <button onClick={() => {
           dispatch({type: "popupAddVisible"})
         }}>
-      <FontAwesomeIcon icon={faPlus} />
+      <FontAwesomeIcon className="icon plus-btn" icon={faPlus} />
       </button>                       
       {popups.popupAddVisible && <PopupAdd />}
 
       <button onClick={() => {
           dispatch({type: "popupHelpVisible"})
         }}>
-      <FontAwesomeIcon icon={faQuestion} />
+      <FontAwesomeIcon className="icon question-btn" icon={faQuestion} />
       </button>                       
       {popups.popupHelpVisible && <PopupHelp />}
       

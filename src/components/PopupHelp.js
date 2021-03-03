@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/popupDownOptions.css';
+import './popupDownOptions.scss';
 
 
 function PopupHelp() {

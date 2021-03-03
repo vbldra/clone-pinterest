@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import './navigation.scss'
 import { NavLink } from 'react-router-dom'
 import { MessengerPiggeon } from "./App"
 
@@ -16,8 +17,8 @@ function Navigation() {
     return (
         <nav>
             <div className="nav-left">
-                <NavLink className="nav-item logo" exact to="/">
-                    <FontAwesomeIcon className="icon" icon={faPinterest} />
+                <NavLink className="nav-item" exact to="/">
+                    <FontAwesomeIcon className="icon logo" icon={faPinterest} />
                 </NavLink>
 
                 <NavLink className="nav-item" activeClassName="active" exact to="/">
@@ -32,30 +33,30 @@ function Navigation() {
             <Search />
 
             <div className="nav-right">
-                <button className="nav-item icon" onClick={() => {
+                <button className="nav-item" onClick={() => {
                         dispatch({type: "popupUpdatesVisible"})
                     }}>
-                    <FontAwesomeIcon icon={faBell} />
+                    <FontAwesomeIcon className="icon" icon={faBell} />
                 </button>
                 {popups.popupUpdatesVisible && <PopupUpdates />}
 
-                <button className="nav-item icon" onClick={() => {
+                <button className="nav-item" onClick={() => {
                         dispatch({type: "popupInboxVisible"})
                     }}>
-                    <FontAwesomeIcon icon={faCommentDots} />
+                    <FontAwesomeIcon className="icon" icon={faCommentDots} />
                 </button>    
                 {popups.popupInboxVisible && <PopupInbox />}
 
                 {user.username && 
-                    <NavLink className="nav-item icon user_logo" exact to="/USER_NAME/_saved/">
-                        <FontAwesomeIcon icon={faUser} />
+                    <NavLink className="nav-item" exact to="/USER_NAME/_saved/">
+                        <FontAwesomeIcon className="icon user-icon" icon={faUser} />
                     </NavLink> 
                 }
                 
-                <button  className="icon arrow" onClick={() => {
+                <button onClick={() => {
                         dispatch({type: "popupOptionVisible"})
                     }}>
-                    <FontAwesomeIcon icon={faChevronDown} />
+                    <FontAwesomeIcon className="icon arrow-icon" icon={faChevronDown} />
                 </button>   
                 {popups.popupOptionVisible && <PopupOptions />}
             </div>
