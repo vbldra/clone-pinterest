@@ -4,8 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { MessengerPiggeon } from "./App"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faChevronDown, faCommentDots, faUser} from '@fortawesome/free-solid-svg-icons'
-import { faPinterest } from '@fortawesome/free-brands-svg-icons'
+import { faBell, faChevronDown, faCommentDots, faStickyNote, faUser} from '@fortawesome/free-solid-svg-icons'
 
 import PopupOptions from './PopupOptions'
 import PopupUpdates from './PopupUpdates'
@@ -18,7 +17,7 @@ function Navigation() {
         <nav>
             <div className="nav-left">
                 <NavLink className="nav-item" exact to="/">
-                    <FontAwesomeIcon className="icon logo" icon={faPinterest} />
+                    <FontAwesomeIcon className="icon logo" icon={faStickyNote} />
                 </NavLink>
 
                 <NavLink className="nav-item" activeClassName="active" exact to="/">
