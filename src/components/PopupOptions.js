@@ -1,5 +1,5 @@
 import React from 'react';
-import './popupOptions.scss';
+import '../sass/popupOptions.scss';
 
 
 function PopupOptions() {

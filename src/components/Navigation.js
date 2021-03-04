@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import './navigation.scss'
+import '../sass/navigation.scss'
 import { NavLink } from 'react-router-dom'
 import { MessengerPiggeon } from "./App"
 
