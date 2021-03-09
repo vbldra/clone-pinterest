@@ -1,8 +1,12 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Item from "./Item";
+import { MessengerPiggeon } from "./App"
+
 
 function DataApi(props) {
+  const {searchText} = useContext(MessengerPiggeon)
+  
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +22,7 @@ function DataApi(props) {
       query = "web+development";
       break;
     case "search":
-      query = "javascript";
+      query = {searchText};
       break;
     default:
       break;

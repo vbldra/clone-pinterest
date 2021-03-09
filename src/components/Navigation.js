@@ -3,21 +3,29 @@ import '../sass/navigation.scss'
 import { NavLink } from 'react-router-dom'
 import { MessengerPiggeon } from "./App"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBell, faChevronDown, faCommentDots, faStickyNote, faUser} from '@fortawesome/free-solid-svg-icons'
-
+import IconFA from "./IconFA";
 import PopupOptions from './PopupOptions'
 import PopupUpdates from './PopupUpdates'
 import PopupInbox from './PopupInbox'
-import Search from './Search'
 
 function Navigation() {
-    const {dispatch, popups, user} = useContext(MessengerPiggeon)
+    const {dispatch, popups, user, searchText, setSearchText, setIsSearching, isSearching} = useContext(MessengerPiggeon)
+    
+    function handleSubmit(event) {
+        event.preventDefault()
+        setIsSearching(true)
+    }
+    function handleChange(event) {
+        setIsSearching(true)
+        setSearchText(event.target.value)
+        console.log(event.target.value, searchText, isSearching)
+    }
+    
     return (
         <nav>
             <div className="nav-left">
                 <NavLink className="nav-item" exact to="/">
-                    <FontAwesomeIcon className="icon logo" icon={faStickyNote} />
+                    <IconFA type="logo" />
                 </NavLink>
 
                 <NavLink className="nav-item" activeClassName="active" exact to="/">
@@ -29,33 +37,40 @@ function Navigation() {
                 </NavLink>
             </div>
 
-            <Search />
+            <div className="search-bar">
+                <NavLink exact to="/searching">
+                    <form onSubmit={handleSubmit}>
+                        <input onChange={handleChange} value={searchText} type="text"/>
+                        <button type="submit"><IconFA type="search"/></button>
+                    </form>
+                </NavLink>
+            </div>
 
             <div className="nav-right">
                 <button className="nav-item" onClick={() => {
                         dispatch({type: "popupUpdatesVisible"})
                     }}>
-                    <FontAwesomeIcon className="icon" icon={faBell} />
+                    <IconFA type="updates" />
                 </button>
                 {popups.popupUpdatesVisible && <PopupUpdates />}
 
                 <button className="nav-item" onClick={() => {
                         dispatch({type: "popupInboxVisible"})
                     }}>
-                    <FontAwesomeIcon className="icon" icon={faCommentDots} />
+                    <IconFA type="inbox" />
                 </button>    
                 {popups.popupInboxVisible && <PopupInbox />}
 
                 {user.username && 
                     <NavLink className="nav-item" exact to="/USER_NAME/_saved/">
-                        <FontAwesomeIcon className="icon user-icon" icon={faUser} />
+                        <IconFA type="user" />
                     </NavLink> 
                 }
                 
                 <button onClick={() => {
                         dispatch({type: "popupOptionVisible"})
                     }}>
-                    <FontAwesomeIcon className="icon arrow-icon" icon={faChevronDown} />
+                    <IconFA type="arrow" />
                 </button>   
                 {popups.popupOptionVisible && <PopupOptions />}
             </div>
