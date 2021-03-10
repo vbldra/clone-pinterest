@@ -36,7 +36,7 @@ function App() {
     for (const key in newState) {
       newState[key] = action.type === key ? !newState[key] : false
     }
-    return newState
+    return newState;
   }
 
   return (
