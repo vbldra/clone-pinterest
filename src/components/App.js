@@ -57,9 +57,9 @@ function App() {
           <FollowingContainer />
         </Route>
         
-        <Route path="/vbldra/_saved/"> {/*link to account name*/}
+        {/* <Route path="/vbldra/_saved/"> 
           <Account />
-        </Route>
+        </Route> */}
 
       </MessengerPiggeon.Provider>
 
@@ -70,7 +70,7 @@ function App() {
       </button>                       
       {popups.popupAddVisible && <PopupFooterAdd />}
 
-      <button onClick={() => {
+      <button className="footer-btn" onClick={() => {
           dispatch({type: "popupHelpVisible"})
         }}>
       <IconFA type="question" />

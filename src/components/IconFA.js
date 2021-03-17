@@ -17,9 +17,9 @@ function IconFA(props) {
         case "arrow":
             return <FontAwesomeIcon className="icon" icon={faChevronDown} />
         case "plus":
-            return <FontAwesomeIcon className="icon" icon={faPlus} />
+            return <FontAwesomeIcon className="icon footer-btn plus-btn" icon={faPlus} />
         case "question":
-            return <FontAwesomeIcon className="icon" icon={faQuestion} />
+            return <FontAwesomeIcon className="icon footer-btn question-btn" icon={faQuestion} />
         default:
             break;
     }

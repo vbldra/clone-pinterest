@@ -1,94 +1,97 @@
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-  text-align: center;
+body {
+    text-align: center;
 }
 
 /* Icons */
 
 button {
-  background: none;
-  border: none;
-  
-  .icon {
-    font-size: 25px;
-    color: #767676;
-    width: 50px;
-    height: 50px;
-    border-radius: 25px;
-  }
-  .plus-btn{
-    position: fixed;
-    z-index: 1;
-    right: 20px;
-    bottom: 100px;
-  }
-  .question-btn {
-    position: fixed;
-    z-index: 1;
-    right: 20px;
-    bottom: 20px;
-  }
-  &:hover {
-    background-color: #EFEFEF;
-  }
+    background: none;
+    border: none;
+
+    .icon {
+        font-size: 25px;
+        color: #767676;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+    }
+    .footer-btn {
+        background:red;
+        position: fixed;
+        z-index: 1;
+        right: 20px;
+        
+        width: 50px;
+        height: 50px;
+        padding: 20px;
+    }
+    .plus-btn {
+        bottom: 100px;
+    }
+    .question-btn {
+        bottom: 20px;
+    }
+    &:hover {
+        background-color: #efefef;
+    }
 }
 
 /* Main container */
 .loading-text {
-  padding: 50px;
+    padding: 50px;
 }
 
 .container {
-  margin: 80px 100px;
+    margin: 80px 100px;
 }
 
 .flex-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 236px);
-  justify-content: center;
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 236px);
+    justify-content: center;
+    gap: 20px;
 }
 
 .item {
-  align-self: start;
-  text-align: left;
-  font-size: 14px;
-  margin-bottom: 20px;
+    align-self: start;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: 20px;
+    h2 {
+        font-size: 18px;
+    }
+
+    img {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    p {
+        margin-top: 10px;
+    }
+
+    .profile_container {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .profile_container .profile_image {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+
+    .profile_container a {
+        display: inline-block;
+        color: black;
+        text-decoration: none;
+    }
 }
 
-.item h2 {
-  font-size: 18px;
-}
-
-.item img {
-  width: 100%;
-  border-radius: 15px;
-
-}
-
-.item p {
-  margin-top: 10px;
-}
-
-.item .profile_container {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.item .profile_container .profile_image {
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-}
-
-.item .profile_container a {
-  display: inline-block;
-  color: black;
-  text-decoration: none;
-}
