@@ -2,16 +2,18 @@ import React from 'react';
 import '../sass/popupOptions.scss';
 
 
-function PopupUpdates() {
-    return (
-        <div className="popup">
-            <h3>Updates</h3>
-            <div className="infoContainer">
-                <p>Some info</p>
-                <div>Pictures</div>
+class PopupUpdates extends React.Component {
+    render = () => {
+        return (
+            <div className="popup">
+                <h3>Updates</h3>
+                <div className="infoContainer">
+                    <p>Some info</p>
+                    <div>Pictures</div>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default PopupUpdates
