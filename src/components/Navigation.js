@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import '../sass/navigation.scss'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { MessengerPiggeon } from "./App"
 
 import IconFA from "./IconFA";
@@ -9,16 +9,16 @@ import PopupUpdates from './PopupUpdates'
 import PopupInbox from './PopupInbox'
 
 function Navigation() {
-    const {dispatch, popups, user, searchText, setSearchText, setIsSearching, isSearching} = useContext(MessengerPiggeon)
-    
+    const {dispatch, popups, searchText, setSearchText} = useContext(MessengerPiggeon)
+    const history = useHistory()
+
     function handleSubmit(event) {
         event.preventDefault()
-        setIsSearching(true)
     }
+
     function handleChange(event) {
-        setIsSearching(true)
+        history.push("/search")
         setSearchText(event.target.value)
-        console.log(event.target.value, searchText, isSearching)
     }
     
     return (
@@ -38,12 +38,10 @@ function Navigation() {
             </div>
 
             <div className="search-bar">
-                <NavLink exact to="/searching">
-                    <form onSubmit={handleSubmit}>
-                        <input onChange={handleChange} value={searchText} type="text"/>
-                        <button type="submit"><IconFA type="search"/></button>
-                    </form>
-                </NavLink>
+                <form onSubmit={handleSubmit}>
+                    <input onChange={handleChange} value={searchText} type="text"/>
+                    <button type="submit"><IconFA type="search"/></button>
+                </form>
             </div>
 
             <div className="nav-right">
@@ -61,11 +59,11 @@ function Navigation() {
                 </button>    
                 {popups.popupInboxVisible && <PopupInbox />}
 
-                {user.username && 
+                {/* {user.username && 
                     <NavLink className="nav-item" exact to="/USER_NAME/_saved/">
                         <IconFA type="user" />
                     </NavLink> 
-                }
+                } */}
                 
                 <button onClick={() => {
                         dispatch({type: "popupOptionVisible"})

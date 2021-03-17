@@ -15,11 +15,10 @@ import IconFA from "./IconFA";
 export const MessengerPiggeon = React.createContext(null)
 
 function App() {
-  const [user, setUser] = useState({
-    username: "null"
-  })
+//   const [user, setUser] = useState({
+//     username: "null"
+//   })
 
-  const [isSearching, setIsSearching] = useState(false)
   const [searchText, setSearchText] = useState("")
 
   // Popups
@@ -42,16 +41,16 @@ function App() {
   return (
     <div className="App">
       <MessengerPiggeon.Provider 
-        value={{dispatch, popups, user, searchText, setSearchText, isSearching, setIsSearching}}>
+        value={{dispatch, popups, searchText, setSearchText}}>
         
         <Navigation />
       
         <Route path="/" exact>
-          {user.username && <HomeContainer />}
+          <HomeContainer />
         </Route>
 
         <Route path="/search" exact>
-          {searchText && <SearchContainer />}
+          <SearchContainer />
         </Route>
         
         <Route path="/following" exact>

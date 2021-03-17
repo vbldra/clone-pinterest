@@ -45,7 +45,7 @@ function DataApi(props) {
     } catch (error) {
         console.error(error);
     }
-  }, []);
+  }, props.type === "search" ? [searchText] : []);
 
   return (
     <>
