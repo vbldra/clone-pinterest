@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import Item from "./Item";
-import { MessengerPiggeon } from "./App"
+import { MessengerPiggeon } from "../context/context"
 
 
 function DataApi(props) {

@@ -1,34 +1,23 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../sass/navigation.scss";
-import { NavLink, useHistory } from "react-router-dom";
-import { MessengerPiggeon } from "./App";
+import { NavLink } from "react-router-dom";
 
+import { MessengerPiggeon } from "../context/context";
 import IconFA from "./IconFA";
-import PopupOptions from "./PopupOptions";
 import PopupUpdates from "./PopupUpdates";
 import PopupInbox from "./PopupInbox";
 
-
 class Navigation extends React.Component {
-    static contextType = MessengerPiggeon
-    // const { dispatch, popups, searchText, setSearchText } = useContext(
-    //     MessengerPiggeon
-    // );
-    // const history = useHistory();
-
-    componentDidMount() {
-        const mesPig = this.context
-    }
-
+    static contextType = MessengerPiggeon;
 
     handleSubmit = (event) => {
         event.preventDefault();
-    }
+    };
 
     handleChange = (event) => {
         this.props.history.push("/search");
-        this.mesPig.setSearchText(event.target.value);
-    }
+        this.context.setSearchText(event.target.value);
+    };
 
     render = () => {
         return (
@@ -37,7 +26,7 @@ class Navigation extends React.Component {
                     <NavLink className="nav-item" exact to="/">
                         <IconFA type="logo" />
                     </NavLink>
-    
+
                     <NavLink
                         className="nav-item"
                         activeClassName="active"
@@ -46,7 +35,7 @@ class Navigation extends React.Component {
                     >
                         Home
                     </NavLink>
-    
+
                     <NavLink
                         className="nav-item"
                         activeClassName="active"
@@ -56,57 +45,48 @@ class Navigation extends React.Component {
                         Following
                     </NavLink>
                 </div>
-    
+
                 <div className="search-bar">
                     <form onSubmit={this.handleSubmit}>
                         <input
                             onChange={this.handleChange}
-                            value={this.mesPig.searchText}
+                            value={this.context.searchText}
                             type="text"
                             placeholder="Search"
                         />
                     </form>
                 </div>
-    
+
                 <div className="nav-right">
                     <button
                         className="nav-item"
-                        // onClick={() => {
-                        //     dispatch({ type: "popupUpdatesVisible" });
-                        // }}
+                        onClick={() => {
+                            this.context.dispatch({
+                                type: "popupUpdatesVisible",
+                            });
+                        }}
                     >
                         <IconFA type="updates" />
                     </button>
-                    {this.mesPig.popups.popupUpdatesVisible && <PopupUpdates />}
-    
+                    {this.context.popups.popupUpdatesVisible && (
+                        <PopupUpdates />
+                    )}
+
                     <button
                         className="nav-item"
-                        // onClick={() => {
-                        //     dispatch({ type: "popupInboxVisible" });
-                        // }}
+                        onClick={() => {
+                            this.context.dispatch({
+                                type: "popupInboxVisible",
+                            });
+                        }}
                     >
                         <IconFA type="inbox" />
                     </button>
-                    {this.mesPig.popups.popupInboxVisible && <PopupInbox />}
-    
-                    {/* {user.username && 
-                        <NavLink className="nav-item" exact to="/USER_NAME/_saved/">
-                            <IconFA type="user" />
-                        </NavLink> 
-                    } */}
-    
-                    {/* <button
-                        onClick={() => {
-                            dispatch({ type: "popupOptionVisible" });
-                        }}
-                    >
-                        <IconFA type="arrow" />
-                    </button>
-                    {popups.popupOptionVisible && <PopupOptions />} */}
+                    {this.context.popups.popupInboxVisible && <PopupInbox />}
                 </div>
             </nav>
         );
-    }
+    };
 }
 
 export default Navigation;
